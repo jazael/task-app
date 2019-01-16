@@ -15,8 +15,8 @@ export class TaskComponent implements OnInit {
   projects: Project[] = [];
   taskForm: FormGroup;
   task: Task;
-  projectsFilteredList: Project[];
-  id: number;
+  projectsFiltered: Project[];
+  id: string;
   private sub: any;
 
   constructor(private taskService: TaskService, private _fb: FormBuilder, private route: ActivatedRoute) {
@@ -29,10 +29,10 @@ export class TaskComponent implements OnInit {
         response => this.projects = response
       );
 
-      this.id = +this.route.snapshot.paramMap.get('id');
+      this.id = this.route.snapshot.paramMap.get('id');
       let task: any;
-      if (this.id != null) {
-        task = this.taskService.getTaskByIndex(this.id);
+      if (this.id !== '') {
+        task = this.taskService.getTaskByIndex(+this.id);
         this.task.project = { id: task.project.id, descripcion: task.project.descripcion };        ;
         this.task.nombretarea = task.nombretarea;
         this.task.tiempo = task.tiempo;
@@ -62,7 +62,11 @@ export class TaskComponent implements OnInit {
     this.task.nombretarea = this.taskForm.value.nombretarea;
     this.task.tiempo = this.taskForm.value.tiempo;
     this.task.hide = this.taskForm.value.hide;
-    this.taskService.saveTask(this.task);
+    if (this.id !== '') {
+      this.taskService.updateTask(this.task, +this.id);
+    } else {
+      this.taskService.saveTask(this.task);
+    }
   }
 
 }

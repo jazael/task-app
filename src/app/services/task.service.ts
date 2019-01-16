@@ -3,6 +3,7 @@ import { Project } from '../models/project.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TaskService {
 
   tasks: Task[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.url);
@@ -41,10 +42,17 @@ export class TaskService {
         tasks.push(task);
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+    this.router.navigate(['/tasks']);
+  }
+
+  updateTask(task: Task, index: number) {
+    this.tasks.splice(index, 1);
+    this.tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    this.router.navigate(['/tasks']);
   }
 
   getTaskByIndex(index: number): Task {
-    // const tasks = JSON.parse(localStorage.getItem('tasks'));
     return this.tasks[index];
   }
 
