@@ -1,3 +1,5 @@
+import { TaskService } from './../../services/task.service';
+import { Task } from './../../models/task.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[] = [];
+
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.taskService.getProjects()
+      .subscribe(
+        data => console.log(data)
+      );
   }
 
 }

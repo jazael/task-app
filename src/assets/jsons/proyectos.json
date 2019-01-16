@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "descripcion": "Integración Continua Kubernetes"
+  },
+  {
+    "id": 2,
+    "descripcion": "Administración AWS + Docker + Travis CI"
+  },
+  {
+    "id": 3,
+    "descripcion": "Integración Continua Jenkins"
+  },
+  {
+    "id": 4,
+    "descripcion": "Clean Code"
+  },
+  {
+    "id": 5,
+    "descripcion": "Arquitectura de Microservicios"
+  },
+  {
+    "id": 6,
+    "descripcion": "Todo List App Móvil"
+  }
+]
