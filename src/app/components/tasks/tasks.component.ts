@@ -14,10 +14,13 @@ export class TasksComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.taskService.getProjects()
-      .subscribe(
-        data => console.log(data)
-      );
+    this.tasks = this.taskService.getTasks();
+  }
+
+  deleteTask(index: number) {
+    if (confirm('Esta seguro que desea eliminar la tarea ?')) {
+      this.taskService.deleteTask(index);
+    }
   }
 
 }

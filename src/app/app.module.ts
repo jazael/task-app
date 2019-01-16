@@ -13,6 +13,12 @@ import { TaskComponent } from './components/task/task.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash, faEye, faEdit, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTrash, faEye, faEdit, faNewspaper);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpModule,
     APP_ROUTING,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

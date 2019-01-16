@@ -1,3 +1,44 @@
-<p>
-  task works!
-</p>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="taskForm" (ngSubmit)="save()">
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Nombre del proyecto</label>
+        <select class="form-control" [ngClass]="{ 'is-invalid': !taskForm.get('project').valid }" formControlName="project">
+          <option *ngFor="let project of projects" [value]="project.id">{{ project.descripcion }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="taskForm.get('project').errors?.required" >
+            Debe seleccionar un proyecto.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nombre de la tarea</label>
+        <input type="text" class="form-control" [ngClass]="{ 'is-invalid': !taskForm.get('nombretarea').valid }" formControlName="nombretarea">
+        <div class="invalid-feedback" *ngIf="taskForm.get('nombretarea').errors?.required" >
+          Debe ingresar la tarea.
+        </div>
+        <div class="invalid-feedback" *ngIf="taskForm.get('nombretarea').errors?.maxlength" >
+            Ha sobrepasado el tamaño máximo de caracteres permitidos.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Tiempo en horas</label>
+        <input type="number" class="form-control" [ngClass]="{ 'is-invalid': !taskForm.get('tiempo').valid }" formControlName="tiempo">
+        <div class="invalid-feedback" *ngIf="taskForm.get('tiempo').errors?.required" >
+            Debe ingresar la hora estimada.
+          </div>
+        <div class="invalid-feedback" *ngIf="taskForm.get('tiempo').errors?.tiemponovalido" >
+            Ha sobrepasado sobrepasado el rango de horas permitadas, verifique que este dentro del siguiente: [0.5 - 8.0] horas.
+        </div>
+      </div>
+
+      <hr>
+
+      <button class="btn btn-primary btn-block mb-2" [disabled]="!taskForm.valid">Guardar</button>
+      <a [routerLink]="['/tasks']" class="btn btn-danger btn-block mb-2">Regresar</a>
+
+    </form>
+  </div>
+</div>

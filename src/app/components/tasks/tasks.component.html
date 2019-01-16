@@ -1,8 +1,16 @@
-<div class="card mb-2">
-  <div class="card-header">
-    {{ tasks.nombreproyecto }}
-    <div>
-      <button class="btn btn-primary"><i class="fa fa-eyes"></i></button>
+<div class="text-center p-2">
+    <a [routerLink]="['/task', 0]" class="btn btn-outline-primary">Agregar Tarea</a>
+</div>
+<div class="card mb-2" *ngFor="let task of tasks; let i = index" >
+  <div class="card-header d-flex justify-content-between align-item-center">
+    {{ task.project.descripcion }}
+    <div class="btn-toolbar">
+      <a class="btn btn-outline-primary m-1" data-toggle="tooltip" data-placement="top" title="Ver detalle de tarea"><fa-icon icon="eye"></fa-icon></a>
+      <a [routerLink]="['/task', i]" class="btn btn-outline-secondary m-1" data-toggle="tooltip" data-placement="top" title="Editar datos de la tarea"><fa-icon icon="edit"></fa-icon></a>
+      <a class="btn btn-outline-danger m-1" data-toggle="tooltip" data-placement="top" (click)="deleteTask(i)" title="Eliminar la tarea"><fa-icon icon="trash"></fa-icon></a>
     </div>
+  </div>
+  <div class="cart-body">
+    {{ task.nombretarea }}
   </div>
 </div>
