@@ -1,4 +1,18 @@
 # TaskApp
+Para poder ejecutar el proyecto y que se abra automaticamente ejecutar ng serve -o
+
+El pequeño ejercicio tiene como finalidad crear una lista de tareas generadas a traves de varios proyectos.
+Lista de tareas creadas
+
+![image](https://user-images.githubusercontent.com/11983683/51252876-f3dbb200-196a-11e9-8d64-64936bfcbbcb.png)
+
+Formulario de registro de Tareas
+![image](https://user-images.githubusercontent.com/11983683/51253053-52089500-196b-11e9-8ce9-823f25b06d1a.png)
+
+Edición de las Tareas creadas.
+![image](https://user-images.githubusercontent.com/11983683/51253137-82503380-196b-11e9-8117-a3c85714bb93.png)
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
